@@ -42,8 +42,6 @@ void ExceptionTest(Exception *exception) {
 
 
 int main() {
-    run(&ex3);
-    pthread_key_create(&key, NULL);
     ExceptionTest(&ex1); // 异常1
     ExceptionTest(&ex2); // 异常2
     ExceptionTest(&ex3); // 异常3
