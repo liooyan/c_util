@@ -2,11 +2,18 @@
 #include "stdio.h"
 
 
+
+
 int run(Exception *exception) {
     Throw(exception);
     return 0;
 }
 
+
+int run2(Exception *exception) {
+    Throw(exception);
+    return 0;
+}
 
 void ExceptionTest(Exception *exception) {
 
@@ -15,16 +22,16 @@ void ExceptionTest(Exception *exception) {
         }
         //有异常
         catch(ex1) {
-            printf("异常类型：%s\n", ex1.reason);
+            printfError(msg);
         }
         catch(ex2) {
-            printf("异常类型：%s\n", ex2.reason);
+            printfError(msg);
         }
         catch(ex3) {
-            printf("异常类型：%s\n", ex3.reason);
+            printfError(msg);
         }
         defCatch {
-            printf("通用异常类型\n");
+            printfError(msg);
         }finally{
             printf("执行finally\n");
         }
@@ -35,8 +42,7 @@ void ExceptionTest(Exception *exception) {
 
 
 int main() {
-
-    run(NULL);
+    run(&ex3);
     pthread_key_create(&key, NULL);
     ExceptionTest(&ex1); // 异常1
     ExceptionTest(&ex2); // 异常2

@@ -14,7 +14,6 @@ add_executable(socker_test test/socker.c )
 add_executable(click_test test/click.c )
 
 add_executable(except_test test/except_test.c except/except.c )
-add_executable(except_test2 test/except_test2.c  )
 
 
 

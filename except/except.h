@@ -12,7 +12,6 @@
 
 
 pthread_key_t key;
-
 /// 异常定义
 typedef struct {
     const char *reason;
@@ -35,12 +34,15 @@ typedef struct Error_msg {
 
 
 void throwFunction(Exception *exception, const char *_File, unsigned _Line);
+void printfError(Error_msg *msg);
 
 /// 可能抛出异常的代码块
-#define try  do{ \
-    int type, flag = 1; \
+#define try  { \
+    int type; \
+    int flag = 1; \
     Try_module_stack *tryModuleStack = pthread_getspecific(key);\
     Try_module_stack *newTryModuleStack = (Try_module_stack *) malloc(sizeof(Try_module_stack)); \
+    Error_msg *msg; \
     pthread_setspecific(key, newTryModuleStack);\
     if (tryModuleStack != NULL) {\
         newTryModuleStack->tryModuleStack = tryModuleStack;\
@@ -64,7 +66,7 @@ void throwFunction(Exception *exception, const char *_File, unsigned _Line);
     }while(0); \
 
 /// 捕获特定异常
-#define catch(ex)    if (type && flag && (flag = newTryModuleStack->errorMsg->exception != &ex) == 0)
+#define catch(ex)    if (type && flag && (msg = newTryModuleStack->errorMsg)&&(flag = newTryModuleStack->errorMsg->exception != &ex) == 0)
 #define defCatch    if (type && flag )
 #define finally
 
