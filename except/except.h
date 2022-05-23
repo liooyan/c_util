@@ -10,8 +10,6 @@
 #define EXCEPTION_ERROR 1 //发生异常标记
 #define EXCEPTION_OK 0 //未异常标记
 
-jmp_buf except_jmpBuf1;
-jmp_buf except_jmpBuf2;
 
 
 pthread_key_t key;

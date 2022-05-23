@@ -2,6 +2,7 @@
 #include "stdio.h"
 
 
+
 int run(Exception *exception) {
     Throw(exception);
     return 0;
@@ -32,7 +33,6 @@ void ExceptionTest(Exception *exception) {
             printfError(&msg);
         FINILLY
             printf("执行finally\n");
-            Throw(exception);
             ENDTRY
 
 
@@ -42,7 +42,6 @@ void ExceptionTest(Exception *exception) {
 int main() {
 
 
-    pthread_key_create(&key, NULL);
     ExceptionTest(&ex1); // 异常1
 //    ExceptionTest(&ex2); // 异常2
 //    ExceptionTest(&ex3); // 异常3
