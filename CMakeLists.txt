@@ -12,6 +12,7 @@ add_executable(murmur_hash test/murmur_hash_test.c util/murmur_hash.c )
 add_executable(hash_dict_test test/hash_dict_test.c util/dict_type.c  util/dict.c util/murmur_hash.c )
 add_executable(socker_test test/socker.c )
 add_executable(click_test test/click.c )
+add_executable(mem_test test/mem_test.c mem/mem.c except/except.c )
 
 add_executable(except_test test/except_test.c except/except.c )
 

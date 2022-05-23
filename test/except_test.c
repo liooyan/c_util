@@ -1,7 +1,10 @@
-#include "../except/except_base.h"
+#include "../except/except.h"
 #include "stdio.h"
 
-
+Exception ex1 = {"ex1"};
+Exception ex2 = {"ex2"};
+Exception ex3 = {"ex3"};
+Exception ex4 = {"ex4"};
 
 int run(Exception *exception) {
     Throw(exception);
